@@ -26,11 +26,7 @@ def gerenciamento_cliente(conexao_cliente, endereco_cliente):
                 if cliente != conexao_cliente:
                     cliente.send(mensagem.encode('utf-8'))
 
-            # Reposta do servidor
-            #resposta = f"Mensagem recebida com sucesso!"
-            #conexao_cliente.send(resposta.encode('utf-8'))
-
-        except ConnectionAbortedError:
+        except (ConnectionAbortedError, ConnectionResetError):
             # Caso o cliente feche a janela abruptamente
             break
     
